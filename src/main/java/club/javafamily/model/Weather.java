@@ -1,4 +1,4 @@
-package org.javafamily.model;
+package club.javafamily.model;
 
 import java.io.Serializable;
 

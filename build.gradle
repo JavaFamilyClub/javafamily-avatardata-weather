@@ -3,29 +3,113 @@ buildscript {
       jacksonVersion = '2.10.3'
       logbackVersion = '1.2.3'
       jupiterVersion = '5.6.2'
+      jclOverSl4jVersion = '1.7.30'
+      jfUtilsVersion = '0.1.1'
+      jfRestVersion = '0.1.3.RELEASE'
    }
 }
 
 plugins {
    id 'java'
+   id 'maven-publish'
+   id 'signing'
 }
 
 group 'club.javafamily'
-version '1.0-SNAPSHOT'
+version '0.1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
 repositories {
+   mavenLocal()
    jcenter()
    mavenCentral()
 }
 
 dependencies {
+   // javafamily
+   // utils
+   implementation "club.javafamily:javafamily-utils:${jfUtilsVersion}"
+   // rest
+   implementation "club.javafamily:javafamily-rest:${jfRestVersion}"
+
+   // jackson
    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
 
+   // logging
    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+   implementation "org.slf4j:jcl-over-slf4j:${jclOverSl4jVersion}"
 
+   // test
    testImplementation "org.junit.jupiter:junit-jupiter:${jupiterVersion}"
+}
+
+task sourcesJar(type: Jar) {
+   from sourceSets.main.allSource
+   archiveClassifier = 'sources'
+}
+
+task javadocJar(type: Jar) {
+   from javadoc
+   archiveClassifier = 'javadoc'
+}
+
+publishing {
+   // 定义发布什么
+   publications {
+      mavenJava(MavenPublication) {
+         groupId = project.group
+         artifactId = project.name
+         version = "${version}"
+         from components.java
+         artifact sourcesJar
+         artifact javadocJar
+         pom {
+            name = 'JavaFamily Avatardata Weather Service'
+            description = 'JavaFamily Avatardata Weather Service library'
+            url = 'https://github.com/JavaFamilyClub/javafamily-avatardata-weather'
+            licenses {
+               license {
+                  name = 'The Apache License, Version 2.0'
+                  url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+               }
+            }
+            developers {
+               developer {
+                  id = 'JavaFamilyClub'
+                  name = 'JavaFamily'
+                  email = 'javafamily.club@outlook.com'
+                  organization = 'JavaFamily'
+               }
+            }
+            scm {
+               url = 'https://github.com/JavaFamilyClub/javafamily-avatardata-weather'
+               connection = 'scm:git:git://github.com/JavaFamilyClub/javafamily-avatardata-weather.git'
+               developerConnection = 'scm:git:ssh://git@github.com/JavaFamilyClub/javafamily-avatardata-weather.git'
+            }
+         }
+      }
+   }
+   repositories {
+      maven {
+         def snapshotsUrl = 'https://oss.sonatype.org/content/repositories/snapshots'
+         def releasesUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2'
+
+         url = project.version.endsWith('-SNAPSHOT') ? snapshotsUrl : releasesUrl
+         credentials {
+            username sonatypeUsername
+            password sonatypePassword
+         }
+      }
+   }
+}
+
+signing {
+   sign publishing.publications.mavenJava
+}
+
+javadoc {
+   options.addStringOption("charset", "UTF-8")
 }
 
 test {
@@ -38,3 +122,4 @@ test {
 wrapper {
    gradleVersion '6.2.1'
 }
+
