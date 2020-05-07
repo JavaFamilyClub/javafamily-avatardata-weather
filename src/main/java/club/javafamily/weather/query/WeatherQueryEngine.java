@@ -1,6 +1,6 @@
 package club.javafamily.weather.query;
 
-import org.javafamily.model.HttpHeaders;
+import club.javafamily.model.WeatherVO;
 import org.javafamily.model.HttpParameters;
 import org.javafamily.rest.BaseQueryEngine;
 
@@ -24,17 +24,17 @@ public class WeatherQueryEngine extends BaseQueryEngine {
    /**
     * Query special city weather.
     * @param city query city
-    * @return json string.
+    * @return weather vo model.
     * @throws Exception Query failed.
     */
-   public String queryWeather(String city) throws Exception {
+   public WeatherVO queryWeather(String city) throws Exception {
       HttpParameters httpParameters = new HttpParameters();
       httpParameters.addParam("cityname", city);
 
-      HttpHeaders httpHeaders = new HttpHeaders();
-      String jsonResult = query(WEATHER_API_URI, httpParameters, httpHeaders);
+      WeatherVO result = query(WEATHER_API_URI, httpParameters,
+         null, WeatherVO.class);
 
-      return jsonResult;
+      return result;
    }
 
    private static final String WEATHER_API_URI = "/Weather/Query";

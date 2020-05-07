@@ -4,8 +4,8 @@ buildscript {
       logbackVersion = '1.2.3'
       jupiterVersion = '5.6.2'
       jclOverSl4jVersion = '1.7.30'
-      jfUtilsVersion = '0.1.1'
-      jfRestVersion = '0.1.3.RELEASE'
+      jfUtilsVersion = '0.1.3-SNAPSHOT'
+      jfRestVersion = '0.1.4-SNAPSHOT'
    }
 }
 
@@ -16,8 +16,8 @@ plugins {
 }
 
 group 'club.javafamily'
-// version '0.1.0-SNAPSHOT'
-version '0.1.0.RELEASE'
+version '0.1.1-SNAPSHOT'
+//version '0.1.1.RELEASE'
 
 sourceCompatibility = 1.8
 
