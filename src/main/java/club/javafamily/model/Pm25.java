@@ -5,10 +5,10 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.io.Serializable;
 
 public class Pm25 implements Serializable {
-    private String key; // 键
-    private String show_desc; // 描述
-    private String dateTime; // 时间日期
-    private String cityName; // 城市
+    private String key; // key
+    private String show_desc; // desc
+    private String dateTime; // dateTime
+    private String cityName; // city
     // TODO Pm25 ---> Pm25Info
     @JsonDeserialize(as = Pm25Info.class)
     private Pm25Info pm25; // pm25
@@ -54,12 +54,12 @@ public class Pm25 implements Serializable {
     }
 
     class Pm25Info implements Serializable {
-        private String curPm; // 当前 PM 值
-        private String des; // PM 描述
-        private String level; // 等级
-        private String pm10; // pm10 值
-        private String pm25; // pm25 值
-        private String quality; // 质量
+        private String curPm; // Current PM
+        private String des; // PM desc
+        private String level; // level
+        private String pm10; // pm10
+        private String pm25; // pm25
+        private String quality; // quality
 
         public String getCurPm() {
             return curPm;

@@ -71,10 +71,10 @@ public class RealTime implements Serializable {
    }
 
    class Wind implements Serializable {
-      private String direct; // 风向
-      private String power; // 风力
-      private String windspeed; // 风速
-      private String offset; // 偏移
+      private String direct; // wind direction
+      private String power; // wind power
+      private String windspeed;
+      private String offset;
 
       public String getDirect() {
          return direct;
