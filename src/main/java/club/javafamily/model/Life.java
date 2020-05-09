@@ -1,6 +1,7 @@
 package club.javafamily.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class Life implements Serializable {
     private String date;
@@ -22,7 +23,15 @@ public class Life implements Serializable {
         this.info = info;
     }
 
-    class Info implements Serializable {
+    @Override
+    public String toString() {
+        return "Life{" +
+           "date='" + date + '\'' +
+           ", info=" + info +
+           '}';
+    }
+
+    public class Info implements Serializable {
         private String[] kongtiao;
         private String[] yundong;
         private String[] ziwaixian;
@@ -85,6 +94,19 @@ public class Life implements Serializable {
 
         public void setChuanyi(String[] chuanyi) {
             this.chuanyi = chuanyi;
+        }
+
+        @Override
+        public String toString() {
+            return "Info{" +
+               "kongtiao=" + Arrays.toString(kongtiao) +
+               ", yundong=" + Arrays.toString(yundong) +
+               ", ziwaixian=" + Arrays.toString(ziwaixian) +
+               ", ganmao=" + Arrays.toString(ganmao) +
+               ", xiche=" + Arrays.toString(xiche) +
+               ", wuran=" + Arrays.toString(wuran) +
+               ", chuanyi=" + Arrays.toString(chuanyi) +
+               '}';
         }
     }
 }

@@ -40,7 +40,7 @@ public class WeatherItem implements Serializable {
         this.info = info;
     }
 
-    class Info implements Serializable {
+    public class Info implements Serializable {
         private String[] dawn;
         private String[] day;
         private String[] night;

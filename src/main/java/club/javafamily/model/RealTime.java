@@ -13,6 +13,25 @@ public class RealTime implements Serializable {
    private String moon; // 农历
    private Weather weather; // 实时天气情况
    private Wind wind; // 风况
+   private String dataUptime; // data up time
+   @JsonProperty("city_code")
+   private String cityCode;
+
+   public String getCityCode() {
+      return cityCode;
+   }
+
+   public void setCityCode(String cityCode) {
+      this.cityCode = cityCode;
+   }
+
+   public String getDataUptime() {
+      return dataUptime;
+   }
+
+   public void setDataUptime(String dataUptime) {
+      this.dataUptime = dataUptime;
+   }
 
    public String getDate() {
       return date;
@@ -70,7 +89,22 @@ public class RealTime implements Serializable {
       this.wind = wind;
    }
 
-   class Wind implements Serializable {
+   @Override
+   public String toString() {
+      return "RealTime{" +
+         "date='" + date + '\'' +
+         ", time='" + time + '\'' +
+         ", week='" + week + '\'' +
+         ", cityName='" + cityName + '\'' +
+         ", moon='" + moon + '\'' +
+         ", weather=" + weather +
+         ", wind=" + wind +
+         ", dataUptime='" + dataUptime + '\'' +
+         ", cityCode='" + cityCode + '\'' +
+         '}';
+   }
+
+   public class Wind implements Serializable {
       private String direct; // wind direction
       private String power; // wind power
       private String windspeed;
@@ -107,12 +141,23 @@ public class RealTime implements Serializable {
       public void setOffset(String offset) {
          this.offset = offset;
       }
+
+      @Override
+      public String toString() {
+         return "Wind{" +
+            "direct='" + direct + '\'' +
+            ", power='" + power + '\'' +
+            ", windspeed='" + windspeed + '\'' +
+            ", offset='" + offset + '\'' +
+            '}';
+      }
    }
 
-   class Weather implements Serializable {
+   public class Weather implements Serializable {
       private String humidity; // 湿度
       private String temperature; // 温度
       private String info; // 天气情况
+      private String img; // image
 
       public String getHumidity() {
          return humidity;
@@ -136,6 +181,24 @@ public class RealTime implements Serializable {
 
       public void setInfo(String info) {
          this.info = info;
+      }
+
+      public String getImg() {
+         return img;
+      }
+
+      public void setImg(String img) {
+         this.img = img;
+      }
+
+      @Override
+      public String toString() {
+         return "Weather{" +
+            "humidity='" + humidity + '\'' +
+            ", temperature='" + temperature + '\'' +
+            ", info='" + info + '\'' +
+            ", img='" + img + '\'' +
+            '}';
       }
    }
 }

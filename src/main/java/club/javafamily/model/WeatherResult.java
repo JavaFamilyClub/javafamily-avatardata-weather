@@ -1,11 +1,15 @@
 package club.javafamily.model;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class WeatherVO implements Serializable {
+import java.io.Serializable;
+import java.util.Arrays;
+
+public class WeatherResult implements Serializable {
+    @JsonProperty("realtime")
     private RealTime realTime;
     private Life life;
-    private Weather weather;
+    private WeatherItem[] weather;
     private Pm25 pm25;
     private int isForeign;
 
@@ -25,11 +29,11 @@ public class WeatherVO implements Serializable {
         this.life = life;
     }
 
-    public Weather getWeather() {
+    public WeatherItem[] getWeather() {
         return weather;
     }
 
-    public void setWeather(Weather weather) {
+    public void setWeather(WeatherItem[] weather) {
         this.weather = weather;
     }
 
@@ -47,5 +51,16 @@ public class WeatherVO implements Serializable {
 
     public void setIsForeign(int isForeign) {
         this.isForeign = isForeign;
+    }
+
+    @Override
+    public String toString() {
+        return "WeatherResult{" +
+           "realTime=" + realTime +
+           ", life=" + life +
+           ", weather=" + (weather != null ? Arrays.asList(weather).toString() : "") +
+           ", pm25=" + pm25 +
+           ", isForeign=" + isForeign +
+           '}';
     }
 }

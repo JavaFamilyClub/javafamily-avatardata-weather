@@ -53,7 +53,7 @@ public class Pm25 implements Serializable {
         this.pm25 = pm25;
     }
 
-    class Pm25Info implements Serializable {
+    public class Pm25Info implements Serializable {
         private String curPm; // Current PM
         private String des; // PM desc
         private String level; // level
