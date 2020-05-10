@@ -1,8 +1,8 @@
 package club.javafamily.weather.query;
 
+import club.javafamily.model.HttpParameters;
+import club.javafamily.rest.BaseQueryEngine;
 import club.javafamily.vo.WeatherVO;
-import org.javafamily.model.HttpParameters;
-import org.javafamily.rest.BaseQueryEngine;
 
 /**
  * Weather Query Engine.
