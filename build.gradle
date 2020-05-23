@@ -22,7 +22,10 @@ version '0.1.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
-   mavenLocal()
+   maven {
+      url 'https://oss.sonatype.org/content/repositories/snapshots'
+   }
+
    jcenter()
    mavenCentral()
 }
@@ -110,8 +113,14 @@ signing {
 }
 
 javadoc {
-   options.addStringOption("charset", "UTF-8")
+   options.addStringOption("encoding", "UTF-8")
 }
+
+tasks.withType(JavaCompile) {
+   options.encoding = 'UTF-8'
+}
+
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 test {
    useJUnitPlatform()
