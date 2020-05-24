@@ -1,4 +1,4 @@
-package club.javafamily.model;
+package club.javafamily.weather.model;
 
 import java.io.Serializable;
 import java.util.Arrays;

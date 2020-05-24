@@ -3,7 +3,7 @@ package club.javafamily.weather.query;
 import club.javafamily.util.string.json.JsonPathUtils;
 import club.javafamily.util.string.json.JsonUtils;
 import club.javafamily.util.test.MockUtils;
-import club.javafamily.vo.WeatherVO;
+import club.javafamily.weather.vo.WeatherVO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
@@ -15,7 +15,7 @@ public class WeatherQueryEngineTests {
 
    @BeforeAll
    public static void init() {
-      engine = new WeatherQueryEngine();
+      engine = new WeatherQueryEngine("8741319d614f47f39ea7618fc4ce08f2");
    }
 
    @Test

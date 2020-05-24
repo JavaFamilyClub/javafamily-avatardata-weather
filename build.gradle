@@ -59,7 +59,6 @@ task javadocJar(type: Jar) {
 }
 
 publishing {
-   // 定义发布什么
    publications {
       mavenJava(MavenPublication) {
          groupId = project.group

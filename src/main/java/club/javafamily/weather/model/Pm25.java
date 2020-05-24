@@ -1,4 +1,4 @@
-package club.javafamily.model;
+package club.javafamily.weather.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 

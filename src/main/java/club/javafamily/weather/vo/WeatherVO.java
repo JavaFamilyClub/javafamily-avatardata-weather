@@ -1,6 +1,6 @@
-package club.javafamily.vo;
+package club.javafamily.weather.vo;
 
-import club.javafamily.model.WeatherResult;
+import club.javafamily.weather.model.WeatherResult;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
